@@ -36,10 +36,18 @@ function hunterSnapshot_(){
     if(!row[0])return;
     try{latest[row[0]]=Object.assign(JSON.parse(row[3]||'{}'),{id:row[0],kind:row[1],title:row[2],status:row[5]})}catch(e){}
   })}
-  return {tasks,monthly,records:Object.values(latest).filter(x=>!x.deleted),source:'Google Apps Script / Google Sheets'};
+  const travelSh=ss.getSheetByName('Travel & Outside Work');
+  const travel=travelSh&&travelSh.getLastRow()>=10?travelSh.getRange(10,1,Math.min(travelSh.getLastRow()-9,900),16).getValues().filter(r=>r[0]&&r[14]).map(r=>({date:r[0] instanceof Date?Utilities.formatDate(r[0],'Asia/Kolkata','yyyy-MM-dd'):String(r[0]),route:String(r[1]||''),fare:Number(r[5])||0,rideId:String(r[14]||''),source:'Rapido'})):[];
+  const meetingSh=ss.getSheetByName('Calendar');
+  const meetings=meetingSh&&meetingSh.getLastRow()>=13?meetingSh.getRange(13,1,Math.min(meetingSh.getLastRow()-12,900),19).getValues().filter(r=>r[0]&&r[3]).map(r=>({
+    date:r[0] instanceof Date?Utilities.formatDate(r[0],'Asia/Kolkata','yyyy-MM-dd'):String(r[0]),
+    start:typeof r[1]==='number'?Math.round(r[1]*1440):r[1] instanceof Date?Number(Utilities.formatDate(r[1],'Asia/Kolkata','H'))*60+Number(Utilities.formatDate(r[1],'Asia/Kolkata','m')):null,
+    title:String(r[3]||''),status:String(r[8]||''),link:String(r[7]||''),rsvp:String(r[16]||'')
+  })):[];
+  return {tasks,monthly,travel,meetings,records:Object.values(latest).filter(x=>!x.deleted),source:'Google Apps Script / Google Sheets'};
 }
 function hunterAppendRecord_(item){
-  const allowed=['books','drama','anime','tasks','notes'];
+  const allowed=['books','drama','anime','hentai','tasks','notes'];
   if(!allowed.includes(item.kind))throw Error('Unsupported kind');
   if(!/^[\w:./-]{5,150}$/.test(String(item.id||'')))throw Error('Invalid ID');
   if(!item.title||String(item.title).length>200)throw Error('Invalid title');
