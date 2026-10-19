@@ -141,3 +141,35 @@ html,body,#root{background:#0A0708;color:#F4E7CC}
 .systemQuestDialogTop button{background:#571D2B;border:1px solid #B9903E;color:#F7E8C8}
 .questWindow input,.questWindow select,.systemQuestDialog input{background:#180C11;color:#F8EAD0;border-color:#7B5135}
 .questWindow input:focus,.questWindow select:focus{border-color:#D4AF37;outline-color:#D4AF37}
+
+/* 2026: unified responsive layout, typography, and account surface */
+:root{--ui-gold:#D4AF37;--ui-maroon:#642037;--ui-ink:#0a0708;--ui-cream:#F4E7CC}
+html{overflow-x:hidden}body,#root{max-width:100%;min-width:320px;overflow-x:hidden}
+.shell,.shell main{min-width:0}.shell main{flex:1;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.shell main>*{max-width:100%}
+.shell button,.shell select,.shell input,.shell textarea{min-width:0;max-width:100%;font:inherit}
+.shell button{line-height:1.3;white-space:normal;overflow-wrap:anywhere}
+.shell p,.shell small,.shell h1,.shell h2,.shell h3{overflow-wrap:anywhere}
+.shell header{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.shell .headerActions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.shell .headerActions .btn{min-height:38px;padding:9px 14px}
+.shell .panel,.shell .missionPanel,.shell .systemPanel,.shell .questWindow,.shell .jinwooWindow{min-width:0}
+.shell .questWindow,.shell .jinwooWindow{font-size:14px}
+.shell .questFormOptions>*{min-width:0}
+.shell .questLine>*{min-width:0}
+.shell .questLine small{max-width:100%;overflow-wrap:anywhere}
+.accountCard{width:min(100%,960px);margin:0 auto 24px;padding:20px 24px;background:linear-gradient(130deg,#241018,#0d090b);border:1px solid #8a6131;color:#F4E7CC;box-shadow:0 0 30px #a97a251a}
+.accountHeader{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-bottom:12px;border-bottom:1px solid #61432d;font-size:11px;font-weight:750;color:#D4AF37;letter-spacing:1.1px}
+.accountHeader strong{font-size:10px;color:#eed8a0}
+.accountCard p{font-size:13px;line-height:1.6;color:#decbb6;margin:14px 0}
+.accountCard small{display:block;font-size:11px;line-height:1.5;color:#c4aa92;margin-top:10px}
+.accountCard button{padding:10px 15px;min-height:39px;background:#5d1a2d;border:1px solid #be963f;border-radius:5px;color:#fbe8b1;font-weight:700;font-size:12px}
+.accountCard button:hover{background:#7b2841}
+.accountCard button:disabled{opacity:.6}
+.accountProfile{display:flex;align-items:center;gap:13px;margin:14px 0;min-width:0}
+.accountProfile strong,.accountProfile small{display:block;word-break:break-word}
+.accountAvatar{width:45px;height:45px;flex:0 0 45px;display:grid;place-items:center;background:#4b1a2a;border:1px solid #9c6e30;border-radius:50%;overflow:hidden;font-size:22px}
+.accountAvatar img{width:100%;height:100%;object-fit:cover}
+.accountActions{display:flex;flex-wrap:wrap;gap:9px}
+@media (max-width:900px){.shell header{gap:12px}.accountCard{padding:15px}.shell .headerActions .btn{font-size:12px}}
+@media (max-width:660px){.shell{display:block}.shell aside{position:relative;width:100%;height:auto;min-height:0;display:flex;flex-direction:row;align-items:center;gap:6px;padding:10px;overflow-x:auto;scrollbar-width:thin}.shell aside .nav{width:auto;flex:0 0 auto;font-size:11px;min-height:34px;padding:8px}.shell aside .sideLabel,.shell aside .syncLabel,.shell aside .bottom{display:none}.shell aside .brand{margin:0 10px 0 0;font-size:15px;flex:0 0 auto}.shell main{padding:14px!important}.shell header h1{font-size:clamp(20px,5vw,27px)}.accountCard{margin-bottom:15px}.accountActions>*{flex:1}.questWindow,.jinwooWindow{width:100%}.systemQuestLauncher{width:100%}}
