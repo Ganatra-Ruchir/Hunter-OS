@@ -7,7 +7,7 @@ async function callBridge(payload){
   if(!url||!secret)return {http:503,data:{error:'Configure HUNTER_BRIDGE_URL and HUNTER_BRIDGE_SECRET in Vercel.'}};
   if(!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url))return {http:503,data:{error:'Invalid Google Apps Script deployment URL.'}};
   const controller=new AbortController();
-  const timeout=setTimeout(()=>controller.abort(),22000);
+  const timeout=setTimeout(()=>controller.abort(),8000);
   try{
     const response=await fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...payload,secret}),redirect:'follow',signal:controller.signal});
     const txt=await response.text();let data;
