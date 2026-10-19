@@ -1,6 +1,6 @@
 import{readRecords,readTasks,readMonthly,appendRecord}from './_sheets.js';
 export default async function handler(req,res){
- res.setHeader('Cache-Control','no-store');
+ res.setHeader('Cache-Control','no-store');\n const secret=process.env.HUNTER_SYNC_TOKEN;\n if(!secret)return res.status(503).json({error:'Configure HUNTER_SYNC_TOKEN to enable private sync.'});\n if(req.headers['x-hunter-token']!==secret)return res.status(401).json({error:'Incorrect Hunter sync token.'});
  // Secure this endpoint with deployment protection / user authentication before exposing publicly.
  if(!process.env.GOOGLE_SERVICE_ACCOUNT_JSON)return res.status(503).json({error:'Google Sheets connection not configured. Configure GOOGLE_SERVICE_ACCOUNT_JSON in Vercel.'});
  try{
