@@ -63,3 +63,14 @@ The `api/chat.js` backend tries **NVIDIA Nemotron → Groq → Ollama Cloud**. P
 - The browser selects a small amount of relevant content from your own Hunter OS tasks, books, watchlist and notes, based on keyword matching, and sends it to the selected model for context. This is basic **local retrieval augmentation**, not a production vector database or full RAG indexing. Do not share sensitive workspace information with a third-party inference provider without considering its privacy terms.
 - Keys in Vercel must be applied to **Production** and followed by a redeployment. The old `OPENAI_API_KEY` is unused by the new chat route.
 - **Operational safety**: this is a single-user prototype with a publicly reachable AI route; add proper authenticated sessions and rate limiting before opening sign-up to public users, otherwise third parties could exhaust free-provider quotas.
+
+## v0.9 — Separate libraries and planner intelligence
+Navigation now includes separate bookmarkable pages: `#/books`, `#/manga`, `#/anime`, `#/kdrama`, and `#/activity`. Manga is a filtered view of the saved Books collection, so existing manga aren't duplicated. The Inventory directory remains available.
+
+The dashboard and the Travel & Meetings page now consume `travel` and `meetings` from the **Apps Script bridge**. Rapido data is read from the existing `Travel & Outside Work` sheet starting at row 10 (columns A date, B route, F fare, O unique ride ID). Meetings are read from `Calendar` starting at row 13 (A date, B start, D title, H meeting URL, I status). The sync is read-only for these tabs. The original Rapido/Calendar triggers are unchanged. Metrics include rides and spend for the past 7 calendar days, this calendar month, total spending, and the average across months with recorded rides. Values are based on matched invoice rows, **not all travel methods**; blank/unmatched entries aren't counted.
+
+**To activate:** Copy the new `integrations/HunterBridge.gs` code into the existing separate Apps Script file (do NOT replace the Rapido/Meeting script); **Deploy → Manage deployments → Edit → New version → Deploy**, then redeploy the latest Hunter OS Production build. If the Google Sheets bridge is disconnected, dashboard statistics display an explicit offline message, not fabricated zeros.
+
+Meeting alerts: only when the page is open and browser notification permission is granted; up to 10 minutes before a timed future meeting. This is not an always-on scheduler and cannot notify if the browser is closed. Meeting attendance is not inferred from invitations; Calendar data provides scheduling only.
+
+Other sheets (e.g., `Progress`, `Weekly Workout`, `Notes`, and `Monthly Tasks`) can be integrated into dedicated widgets once their data layout and intended calculations are confirmed. They are not yet incorporated into the new travel metrics.
