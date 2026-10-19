@@ -52,3 +52,14 @@ Hunter OS now includes Google sign-in using Firebase Authentication plus per-use
 6. Sign into the same Google account on your phone to load the workspace. Changes automatically synchronize after a short pause. If multiple devices edit at the same time, the latest whole-workspace save wins; avoid simultaneous editing until granular syncing is implemented.
 
 Existing planner Google Sheets bridge remains separate and continues to require its server-only secrets. The Jinwoo exercise counter is also included in the Hunter OS cloud workspace and retained locally as a fallback. The user must configure Firebase before login can succeed.
+
+## Hunter AI: free-model provider router (no OpenAI API required)
+The `api/chat.js` backend tries **NVIDIA Nemotron → Groq → Ollama Cloud**. Provider keys remain server-side. On a successful response the chat shows the provider. The router uses free/prototype or rate-limited plans and does NOT mean unlimited inference.
+
+- Recommended: https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b → create an NVIDIA API key. In Vercel Production set `NVIDIA_API_KEY` and optionally `NVIDIA_MODEL` (default `nvidia/nemotron-3-super-120b-a12b`).
+- Optional fallback: https://console.groq.com/ → set `GROQ_API_KEY` and optionally `GROQ_MODEL` (default `llama-3.3-70b-versatile`; verify this model remains available to your account).
+- Optional secondary fallback: https://ollama.com/ → create an API key for Ollama Cloud and set `OLLAMA_API_KEY`. Set `OLLAMA_MODEL` to a cloud model available to your account (example `gpt-oss:120b-cloud`).
+- **Local Ollama is not integrated with this hosted Vercel route.** A local Ollama listener at `localhost:11434` on your computer cannot be reached by Vercel. Use Ollama Cloud or deploy a securely authenticated remote inference host.
+- The browser selects a small amount of relevant content from your own Hunter OS tasks, books, watchlist and notes, based on keyword matching, and sends it to the selected model for context. This is basic **local retrieval augmentation**, not a production vector database or full RAG indexing. Do not share sensitive workspace information with a third-party inference provider without considering its privacy terms.
+- Keys in Vercel must be applied to **Production** and followed by a redeployment. The old `OPENAI_API_KEY` is unused by the new chat route.
+- **Operational safety**: this is a single-user prototype with a publicly reachable AI route; add proper authenticated sessions and rate limiting before opening sign-up to public users, otherwise third parties could exhaust free-provider quotas.
