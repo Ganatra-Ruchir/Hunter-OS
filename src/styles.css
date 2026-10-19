@@ -173,3 +173,64 @@ html{overflow-x:hidden}body,#root{max-width:100%;min-width:320px;overflow-x:hidd
 .accountActions{display:flex;flex-wrap:wrap;gap:9px}
 @media (max-width:900px){.shell header{gap:12px}.accountCard{padding:15px}.shell .headerActions .btn{font-size:12px}}
 @media (max-width:660px){.shell{display:block}.shell aside{position:relative;width:100%;height:auto;min-height:0;display:flex;flex-direction:row;align-items:center;gap:6px;padding:10px;overflow-x:auto;scrollbar-width:thin}.shell aside .nav{width:auto;flex:0 0 auto;font-size:11px;min-height:34px;padding:8px}.shell aside .sideLabel,.shell aside .syncLabel,.shell aside .bottom{display:none}.shell aside .brand{margin:0 10px 0 0;font-size:15px;flex:0 0 auto}.shell main{padding:14px!important}.shell header h1{font-size:clamp(20px,5vw,27px)}.accountCard{margin-bottom:15px}.accountActions>*{flex:1}.questWindow,.jinwooWindow{width:100%}.systemQuestLauncher{width:100%}}
+
+/* Hunter OS v0.8 — page-scale consistency, library and right-hand AI dock */
+.shell main{min-width:0;width:100%;overflow-x:hidden}
+.shell .collectionGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:16px;width:100%;align-items:stretch}
+.shell .collectionTile{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:10px;min-width:0;width:100%;height:100%;overflow:hidden;white-space:normal;padding:20px}
+.shell .collectionTile h2{font-size:clamp(16px,2vw,22px);line-height:1.25;margin:3px 0;overflow-wrap:anywhere}
+.shell .collectionTile p{font-size:13px;line-height:1.55;max-width:100%;margin:0;overflow-wrap:anywhere}
+.shell .toolbar,.shell .bookImportBar,.shell .filters{display:flex;flex-wrap:wrap;align-items:center;gap:12px;min-width:0}
+.shell .toolbar>div{flex:1 1 240px;min-width:0}
+.shell .filters button,.shell .bookImportBar button{white-space:normal;min-height:36px}
+.shell .shelfBook{display:flex;flex-direction:column;min-width:0;max-width:100%;overflow:hidden;align-items:stretch;gap:7px}
+.shell .shelfBook>strong{font-size:13px;line-height:1.35;overflow-wrap:anywhere;white-space:normal}
+.shell .shelfBook>small{font-size:11px;line-height:1.4;overflow-wrap:anywhere;white-space:normal}
+.shell .shelfBook select{width:100%;font-size:12px}
+.shell .shelfBook .bookActions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.shell .shelfBook .bookShape{max-width:100%;min-width:0}
+.shell .shelfBook .bookShape img{max-width:100%;object-fit:cover}
+.shell .shelfBook .blankCover{overflow-wrap:anywhere;word-break:break-word}
+.shell .shelfGroup,.shell .bookShelf,.shell .shelfRow,.shell .shelfBooks,.shell .collectionPanel{min-width:0;max-width:100%;overflow-x:auto}
+.shell .searchResults{max-width:100%;min-width:0}
+.shell .result{min-width:0;max-width:100%;overflow:hidden}
+.shell .result>div{min-width:0;overflow-wrap:anywhere}
+.shell .modal{max-width:min(96vw,790px);max-height:92dvh;overflow-y:auto;overflow-x:hidden}
+.shell .manual,.shell .searchBox{min-width:0}
+.shell .seriesBundles div{display:flex;flex-wrap:wrap;gap:9px}
+.hunterAiLayout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,365px);gap:20px;align-items:start;max-width:100%;min-width:0}
+.hunterAiMain{min-width:0;display:flex;flex-direction:column;gap:18px}
+.hunterAiIntro{background:linear-gradient(135deg,#300f1a,#0f090b);border:1px solid #75492c;padding:24px;min-width:0}
+.hunterAiIntro span{font-size:10px;letter-spacing:1.6px;color:#D4AF37;font-weight:800}
+.hunterAiIntro h2{font-size:clamp(22px,3.5vw,34px);line-height:1.2;color:#f7e5be;margin:12px 0}
+.hunterAiIntro p{font-size:13px;line-height:1.7;max-width:650px;color:#d8bfa8}
+.hunterAiMetrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.hunterAiMetrics>div{padding:15px 12px;background:#1e0e14;border:1px solid #644529;min-width:0}
+.hunterAiMetrics strong{display:block;font-size:clamp(22px,3vw,32px);color:#f6d47d;line-height:1.2}
+.hunterAiMetrics small{display:block;color:#d1b69c;margin-top:6px;font-size:11px}
+.hunterAiPrompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hunterAiPrompts button{border:1px solid #805b31;background:#2c111a;color:#f4d99b;padding:12px;text-align:left;min-height:55px;border-radius:6px;font-size:12px;line-height:1.5}
+.hunterAiPrompts button:hover{background:#4c1b2d}
+.shell aside.hunterAiDock{position:sticky;top:20px;width:100%;height:min(850px,calc(100dvh - 32px));min-height:520px;display:flex;flex-direction:column;gap:12px;padding:15px;background:linear-gradient(175deg,#220d15,#0e090c);border:1px solid #9b743e;border-radius:10px;box-shadow:0 0 32px #68223525;overflow:hidden;min-width:0}
+.hunterAiDockHead{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:3px 0 12px;border-bottom:1px solid #62442d}
+.hunterAiDockHead span{font-size:9px;letter-spacing:1px;color:#d0ae65}
+.hunterAiDockHead h3{color:#f6e6c1;font-size:19px;margin:7px 0 0}
+.hunterAiStatus{white-space:nowrap;font-size:9px!important;color:#e5c572!important;border:1px solid #866332;border-radius:16px;padding:6px}
+.hunterAiDockChat{display:flex;flex-direction:column;flex:1;min-height:180px;background:#140d11;border:1px solid #5c352c;border-radius:8px;overflow:hidden}
+.hunterAiDockMessages{display:flex;flex-direction:column;gap:11px;flex:1;overflow-y:auto;padding:12px;min-height:0}
+.hunterAiDockMessages .chatBubble{max-width:94%;padding:11px 12px;font-size:12px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;border-radius:10px}
+.hunterAiDockMessages .chatBubble.user{align-self:flex-end;background:#642037;color:#f7e9cb;border:1px solid #9f753b}
+.hunterAiDockMessages .chatBubble.assistant{align-self:flex-start;background:#2c1720;color:#e9d9c2;border:1px solid #66402b}
+.hunterAiDockMessages .hunterModelName{display:block;font-size:10px;color:#d4b568;margin-top:7px}
+.hunterAiDockForm{display:flex;gap:8px;padding:10px;border-top:1px solid #553728;min-width:0}
+.hunterAiDockForm input{min-width:0;flex:1;width:100%;border:1px solid #805a35;background:#150c11;color:#fbe9cb;padding:10px;font-size:12px;border-radius:6px}
+.hunterAiDockForm button{border:1px solid #b58b37;background:#682033;color:#ffe5a9;border-radius:6px;padding:10px 12px;flex:0 0 auto}
+.hunterAiSuggestions{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto}
+.hunterAiSuggestions h4{color:#edca71;margin:0 0 3px;font-size:12px}
+.hunterAiSuggestions>div{border:1px solid #64492e;background:#220e16;border-radius:6px;padding:9px 11px}
+.hunterAiSuggestions strong{display:block;font-size:12px;color:#f4d17f}
+.hunterAiSuggestions p{font-size:11px;color:#d9c4ac;line-height:1.45;margin:4px 0 0}
+.hunterAiDisclosure{font-size:10px;color:#bca78b;line-height:1.5}
+@media(max-width:1100px){.hunterAiLayout{grid-template-columns:minmax(0,1fr) minmax(280px,330px)}.hunterAiMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.hunterAiLayout{grid-template-columns:minmax(0,1fr)}.shell aside.hunterAiDock{position:relative;top:auto;width:100%;height:600px;min-height:470px;display:flex;flex-direction:column;overflow:hidden;padding:14px}.hunterAiPrompts{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hunterAiPrompts{grid-template-columns:1fr}.hunterAiIntro{padding:16px}.hunterAiMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.shell .collectionGrid{grid-template-columns:1fr}.shell aside.hunterAiDock{height:72dvh;min-height:490px}}
