@@ -37,7 +37,7 @@ export default async function handler(req,res){
       return res.status(result.http===200?201:result.http).json(result.data);
     }
     const kind=String(body.kind||''),title=String(body.title||''),id=String(body.id||''),payload=body.payload;
-    if(!['books','drama','anime','tasks','notes'].includes(kind)||!title||title.length>200||!payload||typeof payload!=='object'||Array.isArray(payload)||JSON.stringify(payload).length>12000||!nodeSafeId(id))return res.status(400).json({error:'Invalid item'});
+    if(!['books','drama','anime','hentai','tasks','notes'].includes(kind)||!title||title.length>200||!payload||typeof payload!=='object'||Array.isArray(payload)||JSON.stringify(payload).length>12000||!nodeSafeId(id))return res.status(400).json({error:'Invalid item'});
     const result=await callBridge({action:'saveItem',kind,id,title,payload,status:String(body.status||'').slice(0,60)});
     return res.status(result.http===200?201:result.http).json(result.data);
   }catch(e){return res.status(502).json({error:e.name==='AbortError'?'Bridge timed out':e.message||'Bridge connection failed'})}
