@@ -39,3 +39,16 @@ Hunter OS reads **Daily Tasks** and **Monthly Tasks** from this spreadsheet with
 - Existing records from standalone HTML versions do not automatically import. Entries added through this React app before first connection are still browser-local until explicitly re-added/synced.
 - This first integration shows planner tasks read-only, and app-created entries are stored in the separate `Hunter OS Data` tab. It intentionally does not overwrite the original `Daily Tasks` sheet's calculated columns.
 - The Sheets storage is an append-only event log: later updates supersede earlier items with the same ID, and deletion uses tombstones. Consider periodic compaction at scale.
+
+## Google account login and cloud sync (new)
+
+Hunter OS now includes Google sign-in using Firebase Authentication plus per-user Firestore workspaces. **This is Firestore cloud storage, not Google Drive backup**; Drive export/attachments are a separate future integration. Cloud mode is disabled until Firebase is configured.
+
+1. Visit https://console.firebase.google.com/ and create or choose a Firebase project. Register a **Web app** and copy its web configuration.
+2. Firebase Authentication → Sign-in method → enable **Google**. In Authentication → Settings → Authorized domains, add `hunteros-gray.vercel.app` and any preview hostname you actually use. Do not allow arbitrary domains.
+3. Firestore Database → create a database. Publish the exact rules from `firestore.rules` in this repo **before** exposing user sign-in. These permit an authenticated user only to read/write `users/{their_uid}/hunter/workspace`, and disallow listing or deleting.
+4. Vercel → hunter.os → Settings → Environment Variables (Production): add `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID` from the Firebase web config. These values are public browser settings, **not private service account keys**.
+5. Redeploy Production. On the dashboard, click **Continue with Google**. First use on your laptop: click **Import this device data**. If a cloud workspace already exists, it is loaded automatically. Local originals are retained in browser storage and a pre-cloud backup key.
+6. Sign into the same Google account on your phone to load the workspace. Changes automatically synchronize after a short pause. If multiple devices edit at the same time, the latest whole-workspace save wins; avoid simultaneous editing until granular syncing is implemented.
+
+Existing planner Google Sheets bridge remains separate and continues to require its server-only secrets. The Jinwoo exercise counter still has its own local storage until integrated into the cloud workspace. The user must configure Firebase before login can succeed.
