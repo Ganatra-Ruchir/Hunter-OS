@@ -20,3 +20,10 @@ export async function readRecords(){await ensureTab();const r=await request('/va
 export async function appendRecord(item){await ensureTab();await request('/values/'+encodeURIComponent("'"+TAB+"'!A:G")+':append?valueInputOption=RAW&insertDataOption=INSERT_ROWS',{method:'POST',body:JSON.stringify({values:[[item.id,item.kind,item.title,JSON.stringify(item.payload),new Date().toISOString(),item.status||'', 'hunter-os']]})})}
 export async function readTasks(){const r=await request('/values/'+encodeURIComponent("'Daily Tasks'!A3:M250")+'?valueRenderOption=FORMATTED_VALUE');return(r.values||[]).slice(1).filter(x=>x[1]).map((x,i)=>({id:'planner-'+i,title:x[1],date:x[0],category:x[2],priority:x[3],due:x[5],status:x[6],progress:x[7],notes:x[12]}))}
 export async function readMonthly(){const r=await request('/values/'+encodeURIComponent("'Monthly Tasks'!A3:L150")+'?valueRenderOption=FORMATTED_VALUE');return(r.values||[]).slice(1).filter(x=>x[1]).map((x,i)=>({id:'monthly-'+i,title:x[1],category:x[2],priority:x[3],due:x[4],status:x[5],progress:x[9]}))}
+
+export async function appendPlannerQuest(item){
+ const date=new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Kolkata',day:'2-digit',month:'short',year:'numeric'}).replaceAll(' ','-');
+ const values=[[date,item.title,String(item.category||'Personal'),String(item.priority||'Medium'),'',String(item.due||''),'Not Started']];
+ const result=await request('/values/'+encodeURIComponent("'Daily Tasks'!A:G")+':append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS',{method:'POST',body:JSON.stringify({values})});
+ return result.updates?.updatedRange||'';
+}
