@@ -79,9 +79,9 @@ function doPost(e){
     const expected=PropertiesService.getScriptProperties().getProperty('HUNTER_BRIDGE_SECRET');
     if(!expected||expected.length<32)throw Error('Bridge secret is not configured');
     if(typeof data.secret!=='string'||data.secret!==expected)throw Error('Unauthorized');
-    const lock=LockService.getScriptLock();if(!lock.tryLock(20000))throw Error('Bridge busy, retry');
+    if(data.action==='snapshot')return hunterJson_({ok:true,...hunterSnapshot_()});
+    const lock=LockService.getScriptLock();if(!lock.tryLock(4000))throw Error('Bridge busy, retry');
     try{
-      if(data.action==='snapshot')return hunterJson_({ok:true,...hunterSnapshot_()});
       if(data.action==='createPlannerQuest')return hunterJson_(hunterCreateQuest_(data));
       if(data.action==='saveItem')return hunterJson_(hunterAppendRecord_(data));
       throw Error('Unsupported action');
