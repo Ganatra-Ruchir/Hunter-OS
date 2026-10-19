@@ -39,3 +39,21 @@ Hunter OS reads **Daily Tasks** and **Monthly Tasks** from this spreadsheet with
 - Existing records from standalone HTML versions do not automatically import. Entries added through this React app before first connection are still browser-local until explicitly re-added/synced.
 - This first integration shows planner tasks read-only, and app-created entries are stored in the separate `Hunter OS Data` tab. It intentionally does not overwrite the original `Daily Tasks` sheet's calculated columns.
 - The Sheets storage is an append-only event log: later updates supersede earlier items with the same ID, and deletion uses tombstones. Consider periodic compaction at scale.
+
+
+## Google Apps Script bridge (recommended: no service account key)
+
+Hunter OS now has `integrations/HunterBridge.gs` and uses a Vercel-to-Apps-Script proxy. The old service-account pathway has been replaced in `api/sync.js`. Your existing Rapido + Calendar scripts stay unchanged.
+
+1. Open the Apps Script project attached to the **existing** Productivity Planner as its Google account owner.
+2. Create a **new** Script file named `HunterBridge` and paste `integrations/HunterBridge.gs`. Do not replace `Code.gs` or change existing triggers.
+3. In **Project Settings → Script properties**, add `HUNTER_BRIDGE_SECRET` with a unique, long secret (minimum 32 characters). Do **not** use your OpenAI key.
+4. Run `testHunterBridge` in Apps Script and approve spreadsheet permissions. Check execution logs; it only reads spreadsheet metadata.
+5. **Deploy → New deployment → Web app**, execute as **Me**, access **Anyone**. This backend-to-backend deployment is restricted by the secret validated in `doPost`. Treat its URL as sensitive; for stronger protection use user OAuth / signed auth and rate limiting before broad production exposure.
+6. Copy the final `https://script.google.com/macros/s/.../exec` URL into Vercel environment variable `HUNTER_BRIDGE_URL`. Add `HUNTER_BRIDGE_SECRET` in Vercel with the **same** secret set in Apps Script. Set `HUNTER_SYNC_TOKEN` to a separate 32+ character secret. Leave `GOOGLE_SHEET_ID` optional; the bridge targets the existing planner ID internally.
+7. Redeploy Hunter OS in Vercel so serverless routes pick up new secrets. Open the app, select **Connect planner**, enter **HUNTER_SYNC_TOKEN**, and confirm the dashboard reads actual tasks.
+8. Add one **test** quest. The new quest should be placed in the first blank **Daily Tasks** row (columns A:G). It should not alter Rapido, Meetings, or other tabs. Check the actual sheet row before considering the integration live.
+
+**Security caveats:** The Apps Script Web app's platform setting `Anyone` permits inbound HTTP requests, but every operation checks `HUNTER_BRIDGE_SECRET` before reading or writing the sheet. The secret remains server-side in Vercel and Script Properties; do not embed it in frontend HTML, add it to GitHub, send it in chat, or distribute the Apps Script URL. The frontend sync token is entered by the end user and held in session storage; this is a single-user access gate, **not** a replacement for full sign-in or abuse throttling. Keep Vercel deployment access restricted for now.
+
+**Note:** Existing app-created collections sync through `Hunter OS Data`; newly created quests go to `Daily Tasks`. Formula cells outside A:G are preserved on existing preformatted rows. New rows appended beyond existing prepared formula ranges might require manual formula fill-down.
