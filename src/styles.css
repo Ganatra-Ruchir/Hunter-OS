@@ -234,3 +234,14 @@ html{overflow-x:hidden}body,#root{max-width:100%;min-width:320px;overflow-x:hidd
 @media(max-width:1100px){.hunterAiLayout{grid-template-columns:minmax(0,1fr) minmax(280px,330px)}.hunterAiMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.hunterAiLayout{grid-template-columns:minmax(0,1fr)}.shell aside.hunterAiDock{position:relative;top:auto;width:100%;height:600px;min-height:470px;display:flex;flex-direction:column;overflow:hidden;padding:14px}.hunterAiPrompts{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.hunterAiPrompts{grid-template-columns:1fr}.hunterAiIntro{padding:16px}.hunterAiMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}.shell .collectionGrid{grid-template-columns:1fr}.shell aside.hunterAiDock{height:72dvh;min-height:490px}}
+
+/* Detailed genre classification and editable primary shelf */
+.genreTags{display:flex;flex-wrap:wrap;align-items:center;gap:5px;min-width:0;max-width:100%;margin:3px 0 7px}
+.genreTags span{font-size:10px;line-height:1.35;padding:4px 7px;color:#efdcae;background:#341722;border:1px solid #775232;border-radius:99px;white-space:normal;overflow-wrap:anywhere}
+.genreEditor{display:flex;flex-direction:column;gap:5px;color:#d4b888;font-size:10px;line-height:1.3;margin:2px 0 7px}
+.genreEditor select{font-size:11px;max-width:100%;width:100%;min-height:33px;color:#f4e4cc;background:#1a0e13;border:1px solid #785630;padding:5px 7px;border-radius:4px}
+.shell .filters{gap:7px;row-gap:9px;align-items:center}
+.shell .filters .filter{font-size:11px;line-height:1.35;padding:8px 11px;border-radius:99px;min-height:33px}
+.shell .shelfHeading{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}
+.shell .shelfHeading h3{min-width:0;overflow-wrap:anywhere}
+@media(max-width:600px){.shell .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:7px;scrollbar-width:thin}.shell .filters .filter{flex:0 0 auto;white-space:nowrap}.genreTags span{font-size:9px}.genreEditor select{font-size:12px}}
