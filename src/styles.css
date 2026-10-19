@@ -268,3 +268,43 @@ html{overflow-x:hidden}body,#root{max-width:100%;min-width:320px;overflow-x:hidd
 .shell .collectionGrid .collectionTile{overflow:hidden}
 @media(max-width:780px){.activityStats{grid-template-columns:repeat(2,minmax(0,1fr))}.activityPanels{grid-template-columns:1fr}}
 @media(max-width:470px){.activityStats{grid-template-columns:1fr 1fr;gap:8px}.activityStats article{padding:10px}.activityLine{font-size:11px}}
+
+/* v0.9.1 Single navigation system — no sidebar at any viewport */
+:root{--hunter-bg:#090607;--hunter-surface:#1d0d13;--hunter-gold:#d8b65e;--hunter-text:#f6e9d2;--hunter-border:#6e4a34}
+.shell{display:block!important;width:100%;min-width:0;max-width:100%;overflow-x:clip;background:var(--hunter-bg)}
+.shell>aside{display:none!important}
+.shell>main{width:min(1320px,100%)!important;max-width:100%!important;margin-inline:auto!important;min-width:0!important;padding:clamp(12px,2.8vw,30px)!important}
+.shell>main>header{display:flex;flex-direction:column;gap:12px;min-width:0}
+.appTopLinks{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--hunter-gold);letter-spacing:.08em}
+.backHome{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 17px;background:#29131b;border:1px solid #82603b;border-radius:9px;text-decoration:none!important;color:#f5d687!important;font-weight:700}
+.cloudAccountMountedHidden{display:none!important}.cloudAccountPage{max-width:760px;margin:0 auto 30px}
+.homeHub{display:grid;gap:22px;width:100%;min-width:0;margin:14px auto 30px;color:var(--hunter-text)}
+.homeHero{border:1px solid #886135;border-radius:15px;background:linear-gradient(120deg,#37111f,#1b0c12 65%,#0d080a);padding:clamp(20px,4vw,42px);min-width:0}
+.homeKicker{display:block;color:var(--hunter-gold);font-size:11px;font-weight:800;letter-spacing:.13em}
+.homeHero h2{font-size:clamp(25px,5vw,42px);line-height:1.17;margin:12px 0;color:#f6e5c4;overflow-wrap:anywhere}
+.homeHero p{font-size:clamp(13px,2vw,16px);line-height:1.6;color:#d4bfae;margin:0}
+.homePulse{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+.homePulse span{display:inline-flex;padding:8px 12px;border-radius:22px;border:1px solid #80562e;color:#e7c87d;background:#231016;font-size:12px;overflow-wrap:anywhere}
+.homeHub>h3{font-size:16px;margin:0;color:#f0d6a0}
+.homeNavigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:100%;min-width:0}
+.homeNavButton{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;min-width:0;min-height:124px;border:1px solid #785336;border-radius:13px;background:linear-gradient(160deg,#271018,#140b0f);padding:20px;color:#f7e7cb!important;text-decoration:none!important;transition:border-color .16s ease,transform .16s ease}
+.homeNavButton:hover,.homeNavButton:focus-visible{border-color:#e5ba6a;transform:translateY(-2px);outline-offset:3px}
+.homeNavButton>span{font-size:24px;line-height:1}.homeNavButton>strong{font-size:16px;line-height:1.3;overflow-wrap:anywhere}.homeNavButton>small{font-size:11px;line-height:1.4;color:#c6ac91;overflow-wrap:anywhere}
+.shell input,.shell select,.shell textarea,.shell button{max-width:100%}
+.shell .modal{max-width:min(94vw,750px);max-height:90dvh;overflow:auto}
+.shell .shelfBooks{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:18px}
+.shell .shelfBook{width:100%!important;min-width:0!important;max-width:100%!important;overflow-wrap:anywhere}
+.shell .shelfBook strong,.shell .shelfBook small{overflow-wrap:anywhere}
+@media(max-width:767px){
+ .shell>main{padding:12px!important}
+ .homeNavigation{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .homeNavButton{min-height:96px;padding:14px;gap:7px}
+ .homeNavButton>strong{font-size:14px}.homeNavButton>small{font-size:10px}
+ .shell .shelfBooks{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .shell .shelfBook{padding:8px!important}
+ .shell .hunterAiLayout{display:flex!important;flex-direction:column!important}
+ .shell .hunterAiDock{width:100%!important;min-width:0!important;max-width:100%!important;position:static!important}
+ .activityPanels{grid-template-columns:1fr}
+}
+@media(max-width:359px){.homeNavigation{grid-template-columns:1fr}.shell .shelfBooks{grid-template-columns:1fr}.homeNavButton{min-height:74px}}
+@media(prefers-reduced-motion:reduce){.homeNavButton{transition:none}.homeNavButton:hover{transform:none}}
