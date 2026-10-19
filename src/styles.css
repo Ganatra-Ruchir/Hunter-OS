@@ -128,35 +128,57 @@ header h1{font-size:28px;font-weight:800;letter-spacing:.015em;text-transform:up
 @media(max-width:620px){.questWindow{clip-path:none}.questXp{gap:5px}.questXp>div{padding:10px 4px}.questXp strong{font-size:20px}.questXp small{font-size:8px}.questFormOptions{flex-wrap:wrap}.questFormOptions .btn{width:100%}.questWindowHeader{font-size:8px;letter-spacing:1px}}
 
 /* Hunter Quest Board — matches the existing cyan command-center system */
-.questWindow{width:min(100%,960px);margin:0 auto 32px;padding:clamp(18px,3vw,34px);color:#d9f6ff;background:linear-gradient(155deg,#0b2b40 0%,#061b2c 60%,#071626 100%);border:1px solid #187e9f;box-shadow:0 0 28px #04b9de14,inset 0 0 40px #067fa814;min-width:0}
-.questWindowHeader{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:10px;letter-spacing:1.6px;font-weight:800;color:#75dcf5;border-bottom:1px solid #25576c;padding-bottom:15px}
-.questLive{color:#4beac4;font-size:10px}.questRune{text-align:center;font-size:38px;color:#59e6ff;text-shadow:0 0 22px #2ad9ff;margin:20px 0 8px}
+.questWindow{width:min(100%,960px);margin:0 auto 32px;padding:clamp(18px,3vw,34px);color:#d9f6ff;background:linear-gradient(155deg,#260C15 0%,#130C0D 60%,#0C090A 100%);border:1px solid #774027;box-shadow:0 0 28px #B8860B14,inset 0 0 40px #067fa814;min-width:0}
+.questWindowHeader{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:10px;letter-spacing:1.6px;font-weight:800;color:#E7C66D;border-bottom:1px solid #25576c;padding-bottom:15px}
+.questLive{color:#E7C66D;font-size:10px}.questRune{text-align:center;font-size:38px;color:#E7C66D;text-shadow:0 0 22px #D4AF37;margin:20px 0 8px}
 .questWindowTitle{text-align:center;font-weight:900;font-size:clamp(24px,4vw,38px);letter-spacing:2px;line-height:1.15}
 .questSubtitle{text-align:center;margin:8px 0 24px;color:#99bed4;font-size:11px;letter-spacing:1.3px}
 .questXp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 23px}
-.questXp>div{min-width:0;border:1px solid #1f607c;background:#0e344a;padding:16px;display:flex;flex-direction:column;gap:7px}
+.questXp>div{min-width:0;border:1px solid #1f607c;background:#34121B;padding:16px;display:flex;flex-direction:column;gap:7px}
 .questXp small{font-size:10px;letter-spacing:1px;color:#8cbbd1;font-weight:700}
 .questXp strong{font-size:clamp(16px,2.5vw,26px);color:#e8faff;overflow-wrap:anywhere}
 .questXp em{font-style:normal;color:#88b3c9;font-size:14px}
 .questDivider{height:1px;background:#22576f;margin:23px 0}
-.questSectionTitle{color:#59e9fc;font-size:13px;font-weight:800;letter-spacing:1.2px;margin:0 0 17px}
+.questSectionTitle{color:#E7C66D;font-size:13px;font-weight:800;letter-spacing:1.2px;margin:0 0 17px}
 .questForm{display:flex;flex-direction:column;gap:12px;margin:0}
-.questForm>input,.questFormOptions select{font:inherit;background:#071e31;border:1px solid #28647c;border-radius:4px;color:#e1f6ff;padding:12px;min-width:0;width:100%;outline-offset:2px}
-.questForm>input:focus,.questFormOptions select:focus{border-color:#35d7f8;outline:1px solid #35d7f8}
+.questForm>input,.questFormOptions select{font:inherit;background:#170B0F;border:1px solid #28647c;border-radius:4px;color:#e1f6ff;padding:12px;min-width:0;width:100%;outline-offset:2px}
+.questForm>input:focus,.questFormOptions select:focus{border-color:#D4AF37;outline:1px solid #D4AF37}
 .questFormOptions{display:grid;grid-template-columns:minmax(120px,1fr) minmax(120px,1fr) minmax(140px,auto);gap:10px;align-items:stretch}
 .questFormOptions .btn{display:flex;align-items:center;justify-content:center;white-space:normal;padding:10px 14px}
 .questWarning,.questNotice{padding:13px 14px;font-size:12px;line-height:1.6;background:#10364a;border:1px solid #2d657b;color:#b9dae5;border-radius:4px}
 .questNotice{border-color:#299b8d;color:#9ff2d5}
 .questSubsection{font-size:13px;color:#ace5f8;margin:22px 0 10px}
-.questLine{display:flex;align-items:center;gap:12px;padding:13px 15px;width:100%;min-width:0;text-align:left;color:#d8f4ff;background:#0b2b40;border:1px solid #1d5873;margin:8px 0;border-radius:4px;font-size:13px;line-height:1.4}
-button.questLine{cursor:pointer}button.questLine:hover{border-color:#37c2e6;background:#103950}
+.questLine{display:flex;align-items:center;gap:12px;padding:13px 15px;width:100%;min-width:0;text-align:left;color:#d8f4ff;background:#260C15;border:1px solid #1d5873;margin:8px 0;border-radius:4px;font-size:13px;line-height:1.4}
+button.questLine{cursor:pointer}button.questLine:hover{border-color:#D4AF37;background:#103950}
 .questLine span:nth-child(2){flex:1;min-width:0;overflow-wrap:anywhere}
 .questLine small{color:#8dbbce;font-size:11px;white-space:nowrap}
-.questMark{color:#56e3f4;font-weight:800}.questLine.complete{opacity:.75}.questLine.complete span:nth-child(2){text-decoration:line-through}
+.questMark{color:#E7C66D;font-weight:800}.questLine.complete{opacity:.75}.questLine.complete span:nth-child(2){text-decoration:line-through}
 @media(max-width:650px){.questWindow{padding:16px;margin-bottom:20px}.questXp{grid-template-columns:1fr;gap:8px}.questXp>div{padding:10px 12px}.questFormOptions{grid-template-columns:1fr 1fr}.questFormOptions .btn{grid-column:1/-1}.questLine{flex-wrap:wrap;padding:12px}.questLine small{white-space:normal}}
 
 /* System daily quests launcher and modal */
-.systemQuestLauncher{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 24px;margin:0 auto 22px;max-width:960px;border:1px solid #2486ad;background:linear-gradient(110deg,#09253b,#10334a);color:#e1f6ff;box-shadow:0 0 25px #08ccff13}
-.systemQuestLauncher span{font-size:10px;font-weight:800;letter-spacing:1.7px;color:#69ddff}.systemQuestLauncher h2{font-size:clamp(18px,2.4vw,25px);margin:8px 0}.systemQuestLauncher p{font-size:12px;color:#a7c5d5;max-width:500px;line-height:1.6;margin:0}.systemQuestOpen{background:#087b9d;color:white;border:1px solid #53dcf9;border-radius:4px;padding:13px 17px;cursor:pointer;font-size:12px;font-weight:800;letter-spacing:.6px}.systemQuestOpen:hover{background:#0ba3c4}
-.systemQuestOverlay{position:fixed;inset:0;z-index:9000;display:flex;justify-content:center;align-items:center;background:#020b15df;padding:18px;backdrop-filter:blur(8px)}.systemQuestDialog{width:min(100%,1000px);max-height:min(92dvh,960px);overflow:auto;background:#071728;border:1px solid #39caff;box-shadow:0 0 80px #078de64a;padding:14px;color:#e2f7ff}.systemQuestDialogTop{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 8px 15px;font-size:11px;letter-spacing:1px;color:#83eafa}.systemQuestDialogTop button{background:#10384f;border:1px solid #35718b;color:#d4f6ff;padding:8px 12px;cursor:pointer;border-radius:4px}.systemQuestDialog .jinwooWindow{max-width:none;margin:0}
+.systemQuestLauncher{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 24px;margin:0 auto 22px;max-width:960px;border:1px solid #9A6B30;background:linear-gradient(110deg,#1C0D13,#351019);color:#e1f6ff;box-shadow:0 0 25px #C9A22713}
+.systemQuestLauncher span{font-size:10px;font-weight:800;letter-spacing:1.7px;color:#E7C66D}.systemQuestLauncher h2{font-size:clamp(18px,2.4vw,25px);margin:8px 0}.systemQuestLauncher p{font-size:12px;color:#a7c5d5;max-width:500px;line-height:1.6;margin:0}.systemQuestOpen{background:#7A1828;color:white;border:1px solid #53dcf9;border-radius:4px;padding:13px 17px;cursor:pointer;font-size:12px;font-weight:800;letter-spacing:.6px}.systemQuestOpen:hover{background:#96253A}
+.systemQuestOverlay{position:fixed;inset:0;z-index:9000;display:flex;justify-content:center;align-items:center;background:#060405df;padding:18px;backdrop-filter:blur(8px)}.systemQuestDialog{width:min(100%,1000px);max-height:min(92dvh,960px);overflow:auto;background:#100A0C;border:1px solid #D4AF37;box-shadow:0 0 80px #078de64a;padding:14px;color:#e2f7ff}.systemQuestDialogTop{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 8px 15px;font-size:11px;letter-spacing:1px;color:#83eafa}.systemQuestDialogTop button{background:#431421;border:1px solid #35718b;color:#d4f6ff;padding:8px 12px;cursor:pointer;border-radius:4px}.systemQuestDialog .jinwooWindow{max-width:none;margin:0}
 @media(max-width:600px){.systemQuestLauncher{padding:15px}.systemQuestOpen{width:100%}.systemQuestOverlay{padding:7px}.systemQuestDialog{padding:7px;max-height:97dvh}}
+
+/* Hunter OS — Obsidian, Maroon & Imperial Gold */
+:root{--hunter-black:#0A0708;--hunter-maroon:#641B2B;--hunter-gold:#D4AF37;--hunter-ivory:#F4E7CC}
+html,body,#root{background:#0A0708;color:#F4E7CC}
+.shell{background:radial-gradient(ellipse at 50% 0%,#34101B 0%,#140A0E 47%,#090607 100%);color:#F4E7CC}
+.shell aside{background:linear-gradient(180deg,#1B0B11,#0A0708);border-right:1px solid #64412D}
+.shell main{background:transparent}
+.shell .brand,.shell h1,.shell h2,.shell h3{color:#F4E7CC}
+.shell .brandMark{background:linear-gradient(135deg,#A87A2B,#5D1627);box-shadow:0 0 18px #B6863A44}
+.shell .eyebrow,.shell .sideLabel{color:#D4AF37}
+.shell .nav.active{border-color:#D4AF37;background:#461725;color:#F8D98F}
+.shell .nav:hover{background:#38131D;color:#F4D688}
+.shell .btn,.shell button.systemQuestOpen{background:linear-gradient(120deg,#722036,#3C101D);border:1px solid #C5A047;color:#FFE5A3}
+.shell .btn:hover,.shell button.systemQuestOpen:hover{background:#88283D;border-color:#F0D58A}
+.shell .missionPanel,.shell .systemPanel,.shell .questWindow,.shell .systemQuestLauncher{border-color:#805334;background:linear-gradient(145deg,#280E17,#0D090B);box-shadow:0 0 30px #8F27311A}
+.shell .questWindowHeader,.shell .questSectionTitle,.shell .questWindowTitle,.shell .questXp strong,.shell .questMark,.shell .questLive{color:#E7C66D}
+.systemQuestOverlay{background:#070304e8}
+.systemQuestDialog{background:#11090D;border-color:#D4AF37;box-shadow:0 0 90px #7A1D3D88}
+.systemQuestDialogTop,.systemQuestLauncher span{color:#E7C66D}
+.systemQuestDialogTop button{background:#571D2B;border:1px solid #B9903E;color:#F7E8C8}
+.questWindow input,.questWindow select,.systemQuestDialog input{background:#180C11;color:#F8EAD0;border-color:#7B5135}
+.questWindow input:focus,.questWindow select:focus{border-color:#D4AF37;outline-color:#D4AF37}
