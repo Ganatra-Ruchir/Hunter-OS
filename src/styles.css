@@ -101,3 +101,28 @@ header h1{font-size:28px;font-weight:800;letter-spacing:.015em;text-transform:up
 .seriesBundles button{background:#0a4456;color:#e5fbff;border:1px solid #13889f;border-radius:5px;padding:8px;font-size:11px}
 .seriesBundles button:hover{background:#08758c}
 @media(max-width:760px){.headerActions{gap:5px}.noticeBell{padding:9px}.bookImportBar .btn{width:100%}.notificationTray{top:145px}}
+
+
+/* Original leveling-inspired quest interface */
+.questWindow{position:relative;max-width:950px;margin:0 auto;padding:26px clamp(17px,4vw,52px) 44px;background:linear-gradient(158deg,#051c2cf2,#07152af2 60%,#100f2c);border:1px solid #1cadd0;box-shadow:0 0 0 1px #104863,0 0 48px #00c9ff16,inset 0 0 95px #0074e215;clip-path:polygon(0 0,97% 0,100% 3%,100% 97%,97% 100%,0 100%);color:#e1faff}
+.questWindow:before{content:"";position:absolute;top:0;left:10%;width:35%;height:3px;background:linear-gradient(90deg,transparent,#1fe6fc,transparent)}
+.questWindowHeader{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#23d8f6;font-size:10px;letter-spacing:2px;font-weight:900}
+.questLive{color:#b49aff;white-space:nowrap;font-size:9px}
+.questRune{font-size:49px;color:#72eeff;text-align:center;margin:28px 0 0;text-shadow:0 0 26px #00d4ff}
+.questWindowTitle{text-align:center;font-size:clamp(27px,4vw,47px);letter-spacing:6px;font-weight:900;color:#efffff;text-shadow:0 0 23px #20c9fc7c}
+.questSubtitle{text-align:center;letter-spacing:3px;color:#779cce;font-size:10px;margin:9px 0 30px}
+.questXp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.questXp>div{background:#09263c;border:1px solid #1b668b;padding:16px 10px;text-align:center}
+.questXp small{display:block;color:#73b6d2;font-size:9px;letter-spacing:1px}
+.questXp strong{display:block;font-size:26px;color:#4feefa;margin-top:7px}
+.questXp em{font-size:13px;font-style:normal;color:#82a3b0}
+.questDivider{height:1px;background:linear-gradient(90deg,transparent,#249ec7,transparent);margin:30px 0}
+.questSectionTitle{font-size:12px;letter-spacing:2px;font-weight:900;color:#85e4ff;margin-bottom:16px}
+.questForm input,.questForm select{background:#061f31;border:1px solid #1c6684;border-radius:3px;color:#e9faff;padding:13px}
+.questForm input{width:100%}.questFormOptions{display:flex;align-items:center;gap:10px;margin-top:10px}.questFormOptions .btn{margin-left:auto}
+.questNotice{margin-top:14px;color:#e6faff;background:#092c40;border:1px solid #2186a7;padding:12px;font-size:12px;line-height:1.6}
+.questWarning{padding:13px;border:1px solid #9b7b33;color:#efc76e;background:#27210d66;font-size:12px}
+.questSubsection{color:#86c7da;font-size:12px;font-weight:700;margin:23px 0 11px}
+.questLine{width:100%;display:flex;align-items:center;gap:15px;text-align:left;padding:14px 5px;background:transparent;border:0;border-bottom:1px solid #16506d;color:#cdeefe;font-size:13px}
+.questLine span:nth-child(2){flex:1}.questLine small{color:#7cafbf}.questLine.complete{color:#5e9b9d}.questMark{color:#42dcf3;font-size:20px}.questLine.complete .questMark{color:#36f4ba}
+@media(max-width:620px){.questWindow{clip-path:none}.questXp{gap:5px}.questXp>div{padding:10px 4px}.questXp strong{font-size:20px}.questXp small{font-size:8px}.questFormOptions{flex-wrap:wrap}.questFormOptions .btn{width:100%}.questWindowHeader{font-size:8px;letter-spacing:1px}}
