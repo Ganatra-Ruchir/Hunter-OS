@@ -85,3 +85,19 @@ header h1{font-size:28px;font-weight:800;letter-spacing:.015em;text-transform:up
 @media(max-width:1140px){.hudGrid{grid-template-columns:1fr 1fr}.corePanel{grid-column:span 2;grid-row:1}.missionPanel,.systemPanel{grid-row:2}.coreOrbit{width:280px}.hudBottomGrid{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){aside{background:#03121c}.hudGrid{display:flex;flex-direction:column}.corePanel{order:0}.missionPanel{order:1}.systemPanel{order:2}.hudBottomGrid{grid-template-columns:1fr}.coreOrbit{width:270px}.coreTitle{font-size:23px}.hudFooter{flex-direction:column}.systemTopline{font-size:8px;line-height:1.5}header h1{font-size:21px}.missionPanel,.systemPanel{clip-path:none}}
 @media(prefers-reduced-motion:reduce){.orbitOuter,.orbitMiddle,.coreDiamond{animation:none}}
+
+
+/* Collection importing, grouping and notifications */
+.headerActions{display:flex;align-items:center;gap:12px}
+.noticeBell{border:1px solid #126c84;background:#082c3d;color:#c5fbff;padding:11px 14px;border-radius:6px;font-weight:800}
+.noticeBell:hover{border-color:#25e6ff}
+.notificationTray{position:absolute;right:3vw;top:92px;z-index:8;width:min(365px,90vw);background:#062635;border:1px solid #16a3b8;box-shadow:0 25px 70px #0009;padding:17px;color:#c7edf5;border-radius:8px}
+.notificationTray p{font-size:12px;border-top:1px solid #126077;padding-top:10px}
+.notificationTray small{color:#78a6b7}
+.bookImportBar{display:flex;flex-wrap:wrap;gap:15px;align-items:center;margin:15px 0 17px;font-size:12px;color:#78c6d0}
+.seriesBundles{padding:12px;background:#073242;border:1px solid #0b788d;border-radius:8px;margin:8px 0 15px;color:#b8f8ff}
+.seriesBundles strong{font-size:13px}
+.seriesBundles div{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.seriesBundles button{background:#0a4456;color:#e5fbff;border:1px solid #13889f;border-radius:5px;padding:8px;font-size:11px}
+.seriesBundles button:hover{background:#08758c}
+@media(max-width:760px){.headerActions{gap:5px}.noticeBell{padding:9px}.bookImportBar .btn{width:100%}.notificationTray{top:145px}}
